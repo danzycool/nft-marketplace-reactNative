@@ -23,7 +23,7 @@ const DetailsHeader = ({ data, navigation }) => (
             top={StatusBar.currentHeight + 10}
         />
     </View>
-)
+);
 
 const Details = ({ route, navigation }) => {
     const { data } = route.params;
@@ -42,11 +42,10 @@ const Details = ({ route, navigation }) => {
                 paddingVertical: SIZES.font,
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: 'rgba(255.255.255.0.5)',
+                backgroundColor: 'rgba(255,255,255,0.5)',
                 zIndex: 1,
             }}>
-                <RectButton minWidth={170}
-                    fontSize={SIZES.large} {...SHADOWS.dark} />
+                <RectButton minWidth={170} fontSize={SIZES.large} {...SHADOWS.dark} />
             </View>
             <FlatList
                 data={data.bids}
@@ -63,6 +62,16 @@ const Details = ({ route, navigation }) => {
                         <SubInfo />
                         <View style={{ padding: SIZES.font }}>
                             <DetailsDesc data={data} />
+                            {data.bids.length > 0 && (
+                                <Text style={{
+                                    fontSize: SIZES.font,
+                                    fontFamily: FONTS.semiBold,
+                                    fontWeight: 800,
+                                    color: COLORS.primary
+                                }}>
+                                    Current Bid
+                                </Text>
+                            )}
                         </View>
                     </React.Fragment>
                 )}
